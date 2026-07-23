@@ -108,10 +108,14 @@ MODEL_ZOO = {
 # ----------------------------------------------------------------------------
 # DATA LOADING & CLEANING  (mirrors heart.ipynb)
 # ----------------------------------------------------------------------------
+from pathlib import Path
+
 @st.cache_data
 def load_and_clean_data():
-    df = pd.read_csv("heart.csv")
+    BASE_DIR = Path(__file__).resolve().parent
+    DATA_PATH = BASE_DIR / "heart.csv"
 
+    df = pd.read_csv(DATA_PATH)
     # Replace physiologically impossible zeros with the column mean
     # (identical logic to the notebook's data-cleaning step)
     mean_chol = df.loc[df["Cholesterol"] != 0, "Cholesterol"].mean()
