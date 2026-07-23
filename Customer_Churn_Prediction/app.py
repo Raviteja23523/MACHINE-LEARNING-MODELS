@@ -16,7 +16,10 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 
-MODEL_PATH = "model_bundle.pkl"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = BASE_DIR / "model_bundle.pkl"
 
 # ----------------------------------------------------------------------------
 # PAGE CONFIG
