@@ -110,6 +110,8 @@ MODEL_ZOO = {
 # ----------------------------------------------------------------------------
 @st.cache_data
 def load_and_clean_data():
+    BASE_DIR = Path(__file__).resolve().parent
+    DATA_PATH = BASE_DIR / "heart.csv"
     df = pd.read_csv("heart.csv")
 
     # Replace physiologically impossible zeros with the column mean
